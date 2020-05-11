@@ -12,12 +12,12 @@ const BottomTab = createBottomTabNavigator();
 export const HomeBottomNavigator = () => (
   <BottomTab.Navigator tabBar={(props) => <HomeTabBar {...props} />}>
     <BottomTab.Screen
-      name="todo"
+      name="Todo"
       component={TodoNavigator}
       options={{ title: "TODO", tabBarIcon: LayoutIcon }}
     />
     <BottomTab.Screen
-      name="profile"
+      name="Profile"
       component={ProfileNavigator}
       options={{ title: "PROFILE", tabBarIcon: PersonIcon }}
     />
@@ -25,7 +25,11 @@ export const HomeBottomNavigator = () => (
 );
 
 export const HomeNavigator = () => (
-  <Drawer.Navigator drawerContent={(props) => <HomeDrawer {...props} />}>
+  <Drawer.Navigator
+    // TODO: Track bug: https://github.com/react-navigation/react-navigation/issues/7561
+    // drawerType="back"
+    drawerContent={(props) => <HomeDrawer {...props} />}
+  >
     <Drawer.Screen
       name="Home"
       component={HomeBottomNavigator}
